@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 ingredients = [
     { name: "milk", kind: "base" },
     { name: "soy", kind: "base"},
@@ -23,7 +16,7 @@ ingredients = [
 if Ingredient.count == 0 
     for ingredient in ingredients
         ingredient = Ingredient.create(ingredient)
-        ingredient.create_image(url: Faker::LoremPixel.image)
+        ingredient.create_image(url: Faker::LoremPixel.image + "?random=" + rand(1..1000).to_s)
         puts "created ingredient #{ingredient.name}"
     end
 end
@@ -39,7 +32,7 @@ for i in 1..50
         description: Faker::Lorem.paragraph
     )
 
-    milkshake.create_image(url: Faker::LoremPixel.image)
+    milkshake.create_image(url: Faker::LoremPixel.image + "?random=" + rand(1..1000).to_s)
 
     puts "created milkshake #{milkshake.name}"
 
