@@ -1,0 +1,2 @@
+class Milkshake < ApplicationRecord
+end
