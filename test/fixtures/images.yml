@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  imagable: one
-  imagable_type: Imagable
+  imageable: one
+  imageable_type: Imageable
   url: MyString
 
 two:
-  imagable: two
-  imagable_type: Imagable
+  imageable: two
+  imageable_type: Imageable
   url: MyString

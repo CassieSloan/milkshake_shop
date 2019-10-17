@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_005241) do
+ActiveRecord::Schema.define(version: 2019_10_17_015254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "images", force: :cascade do |t|
-    t.string "imagable_type"
-    t.bigint "imagable_id"
+    t.string "imageable_type"
+    t.bigint "imageable_id"
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["imagable_type", "imagable_id"], name: "index_images_on_imagable_type_and_imagable_id"
+    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
   end
 
   create_table "ingredients", force: :cascade do |t|

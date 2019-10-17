@@ -1,4 +1,3 @@
 class Image < ApplicationRecord
-  belongs_to :imagable, polymorphic: true
-  
+  belongs_to :imageable, polymorphic: true
 end
