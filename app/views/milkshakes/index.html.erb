@@ -1,1 +1,18 @@
-this is working
+<main id="milkshake-index">
+    <div class="banner-image" >
+    </div>
+    <h1>All Milkshakes</h1>
+    <form>
+        <input type="search" name="search" />
+    </form>
+
+    <section>
+        <% @milkshakes.each do |milkshake| %>
+            <div> 
+                <img src="<%=milkshake.image.url%>" />
+                <h2><%= milkshake.name %></h2>
+                <p><%= number_to_currency(milkshake.price / 100.0) %></p>
+            </div>
+        <% end %>
+    </section>
+</main>
