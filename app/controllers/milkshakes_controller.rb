@@ -8,4 +8,8 @@ class MilkshakesController < ApplicationController
         end
     end
 
+    def show
+        @milkshake = Milkshake.find(params[:id])
+    end
+
 end

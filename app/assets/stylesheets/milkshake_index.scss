@@ -14,12 +14,17 @@
     section {
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-around;
         flex-wrap: wrap;
 
+        a {
+            text-decoration: none;
+        }
+
         div {
             width: 25%;
+            color: rgb(0, 0, 0);
         }
 
         img {
