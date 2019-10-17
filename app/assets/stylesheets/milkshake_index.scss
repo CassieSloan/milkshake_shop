@@ -10,4 +10,21 @@
         height: 120px;
         margin: auto;
     }
+
+    section {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+        div {
+            width: 25%;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    }
 }

@@ -1,7 +1,11 @@
 class MilkshakesController < ApplicationController
 
     def index
-        @milkshakes = Milkshake.all
+        if params[:search] && !params[:search].empty?
+            @milkshakes = Milkshake.where(name: params[:search])
+        else
+            @milkshakes = Milkshake.all
+        end
     end
 
 end
