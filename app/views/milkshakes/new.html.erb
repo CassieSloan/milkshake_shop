@@ -1,7 +1,23 @@
 <h1>Create milkshake</h1>
 
-<form action="<%= milkshakes_path %>" method="POST">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<%= form_with model: @milkshake, local: true do |form| %>
+    <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+    <div>
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+    </div>
+    <div>
+        <%= form.label :price %>
+        <%= form.number_field :price, min: 0 %>
+    </div>
+    <%= form.submit %>
+<% end %>
+
+<!-- <form action="<%= milkshakes_path %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
     <div>
         <label for="name">Name</label>
         <input type="name" name="milkshake[name]" id="name" />
@@ -16,3 +32,4 @@
     </div>
     <input type="submit" value="create"/>
 </form>
+-->
