@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   get "/milkshakes", to: "milkshakes#index", as: "milkshakes"
   get "/milkshakes/new", to: "milkshakes#new", as: "new_milkshake"
   get "/milkshakes/:id", to: "milkshakes#show", as: "milkshake"
+  post "/milkshakes", to: "milkshakes#create"
+
 end
