@@ -6,6 +6,8 @@
         <input type="search" name="search" />
     </form>
 
+    <%= link_to("Create Milkshake", new_milkshake_path)%>
+
     <section>
         <% @milkshakes.each do |milkshake| %>
             <%= link_to (milkshake) do %>
