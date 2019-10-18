@@ -13,11 +13,18 @@ class MilkshakesController < ApplicationController
     end
 
     def new
-        
+        @milkshake = Milkshake.new
     end
 
     def create
-        
+        whitelisted_params = params.require(:milkshake).permit(:name, :description, :price)
+        @milkshake = Milkshake.create(whitelisted_params)
+
+        if @milkshake.errors.any?
+            render "new"
+        else
+        redirect_to milkshake_path(@milkshake)
+        end
     end
 
 end
