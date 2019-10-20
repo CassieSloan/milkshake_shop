@@ -4,6 +4,7 @@
 <% for error in @milkshake.errors.full_messages %>
 <p><%= error %></p>
 <% end %>
+<% end %>
 
 <%= form_with model: @milkshake, local: true do |form| %>
     <div>
