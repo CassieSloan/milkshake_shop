@@ -23,6 +23,9 @@
         <%= form.label :pic %>
         <%= form.file_field :pic, accept: "image/png,image/gif,image/jpeg,image/jpg"%>
     </div>
+    <div>
+        <%= form.collection_check_boxes :ingredient_ids, @ingredients, :id, :name %>
+    </div>
     <%= form.submit %>
 <% end %>
 
