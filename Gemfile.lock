@@ -73,6 +73,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
+    down (5.0.0)
+      addressable (~> 2.5)
     erubi (1.9.0)
     execjs (2.7.0)
     faker (2.6.0)
@@ -197,6 +199,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  down (~> 5.0)
   faker (~> 2.6)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
