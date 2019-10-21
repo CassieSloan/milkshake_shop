@@ -9,10 +9,10 @@
     <%= link_to("Create Milkshake", new_milkshake_path)%>
 
     <section>
-        <% @milkshakes.each do |milkshake| %>
+         <% @milkshakes.each do |milkshake| %>
             <%= link_to (milkshake) do %>
                 <div> 
-                    <img src="<%=milkshake.image.url%>" />
+                    <%= image_tag milkshake.pic if milkshake.pic.attached?%>
                     <h2><%= milkshake.name %></h2>
                     <p><%= number_to_currency(milkshake.price / 100.0) %></p>
                 </div>
