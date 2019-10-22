@@ -22,6 +22,7 @@ class MilkshakesController < ApplicationController
         @milkshake = Milkshake.create(whitelisted_params)
 
         if @milkshake.errors.any?
+            # @milkshake.ingredients = Ingredients.where(:id params[:milkshake][:ingredient_ids])
             render "new"
         else
         redirect_to milkshake_path(@milkshake)
