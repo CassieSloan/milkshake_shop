@@ -21,7 +21,8 @@ class MilkshakesController < ApplicationController
 
     def create
         whitelisted_params = params.require(:milkshake).permit(:name, :description, :price, :pic, ingredient_ids: [])
-        @milkshake = Milkshake.create(whitelisted_params)
+        
+        @milkshake = current_user.milkshakes.create(whitelisted_params)
 
         if @milkshake.errors.any?
             # @milkshake.ingredients = Ingredients.where(:id params[:milkshake][:ingredient_ids])
