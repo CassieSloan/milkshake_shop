@@ -1,5 +1,7 @@
 class MilkshakesController < ApplicationController
 
+    before_action :authenticate_user!
+
     def index
         if params[:search] && !params[:search].empty?
             @milkshakes = Milkshake.where(name: params[:search])
