@@ -1,6 +1,7 @@
 class MilkshakesController < ApplicationController
 
     before_action :authenticate_user!
+    before_action :set_milkshake, only: [:show, :edit, :update]
 
     def index
         if params[:search] && !params[:search].empty?
@@ -11,7 +12,6 @@ class MilkshakesController < ApplicationController
     end
 
     def show
-        @milkshake = Milkshake.find(params[:id])
     end
 
     def new
@@ -20,9 +20,8 @@ class MilkshakesController < ApplicationController
     end
 
     def create
-        whitelisted_params = params.require(:milkshake).permit(:name, :description, :price, :pic, ingredient_ids: [])
         
-        @milkshake = current_user.milkshakes.create(whitelisted_params)
+        @milkshake = current_user.milkshakes.create(milkshake_params)
 
         if @milkshake.errors.any?
             # @milkshake.ingredients = Ingredients.where(:id params[:milkshake][:ingredient_ids])
@@ -33,11 +32,28 @@ class MilkshakesController < ApplicationController
     end
 
     def edit
-        @milkshake = Milkshake.find(params[:id])
         @ingredients = Ingredient.all
     end
 
     def update
+    
+        if @milkshake.update(whitelisted_params)
+            redirect_to_milkshake_path(params[:id])
+        else
+            @ingredient = Ingredient.all
+            render "edit"
+        end
     end
+
+    private
+    def milkshake_params
+        params.require(:milkshake).permit(:name, :description, :price, :pic, ingredient_ids: [])
+    end
+
+    def set_milkshake
+        @milkshake = Milkshake.find(params[:id])
+    end
+
+    
 
 end
