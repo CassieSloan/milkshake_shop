@@ -32,4 +32,11 @@ class MilkshakesController < ApplicationController
         end
     end
 
+    def edit
+        @milkshake = Milkshake.find(params[:id])
+    end
+
+    def update
+    end
+
 end
