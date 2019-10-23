@@ -34,6 +34,7 @@ class MilkshakesController < ApplicationController
 
     def edit
         @milkshake = Milkshake.find(params[:id])
+        @ingredients = Ingredient.all
     end
 
     def update
