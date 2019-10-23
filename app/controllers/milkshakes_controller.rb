@@ -54,6 +54,12 @@ class MilkshakesController < ApplicationController
         @milkshake = Milkshake.find(params[:id])
     end
 
+    def set_user_milkshake
+        @milkshake = current_user.milkshakes.find_by_id(params[:id])
+
+        if @milkshake == nil
+            redirect_to milkshakes_path
+    end
     
 
 end
