@@ -1,7 +1,8 @@
 class MilkshakesController < ApplicationController
 
-    before_action :authenticate_user!
-    before_action :set_milkshake, only: [:show, :edit, :update]
+    before_action :authenticate_user! #can't view milkshake unless signed in
+    before_action :set_milkshake, only: [:show, :edit, :update] #only accept these params when editing milkshake
+    before_action :set_user_milkshake, only: [:edit, :update] #ensure user can only edit their own milkshake.
 
     def index
         if params[:search] && !params[:search].empty?
@@ -12,6 +13,31 @@ class MilkshakesController < ApplicationController
     end
 
     def show
+        session = Stripe::Checkout::session.create ( # :: = module 
+            payment_method_type: ["card"],
+            customer_email: current_user.email,
+            line_items: [
+                {
+                name: @milkshake.name,
+                description: @name.description,
+                amount: @name.price,
+                currency: "aud",
+                quantity: 1,
+                }
+            ],
+        payment_intent_data: {
+            metadata: {
+                user_id: current_user.id,
+                listing_id: @milkshake.id
+            }
+        },
+        success_url: "#{root_url}payments/success?userId=#{current_user.id}&listingId=#{@listing.id}",
+        cancel_url: "#{root_url}milkshakes/#{milkshake.id}"
+    )
+
+    @session_id = session.id
+
+        )
     end
 
     def new
